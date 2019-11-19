@@ -20,4 +20,8 @@ class Paciente extends Model
     {
         return $this->name .' '.$this->surname;
     }
+    public function enfermedades()
+    {
+        return $this->belongsTo('App\Enfermedad');
+    }
 }
