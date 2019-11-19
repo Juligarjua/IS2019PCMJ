@@ -20,4 +20,10 @@ class Paciente extends Model
     {
         return $this->name .' '.$this->surname;
     }
+
+    public function tratamientos()
+    {
+        return $this->belongsToMany('App\Tratamiento');
+    }
+
 }
