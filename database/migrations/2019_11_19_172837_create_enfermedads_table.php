@@ -16,11 +16,13 @@ class CreateEnfermedadsTable extends Migration
         Schema::create('enfermedads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('especialidad_id');
+            //AÑADIR MIGRACION ESPECIALIDAD
+            //$table->unsignedInteger('enfermedads_id');
             $table->unsignedInteger('paciente_id');
             $table->timestamps();
 
-            $table->foreign('especialidad_id')->references('id')->on('especialidads')->onDelete('cascade');
+            //AÑADIR MIGRACION ESPECIALIDAD + atributo en App
+            //$table->foreign('enfermedad_id')->references('id')->on('enfermedads')->onDelete('cascade');
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
 
 

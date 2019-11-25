@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enfermedad extends Model
 {
-    protected $fillable = ['name', 'paciente_id', 'especialidad_id'];
+    protected $fillable = ['name', 'paciente_id'];
 
     public function pacientes()
     {
@@ -20,12 +20,12 @@ class Enfermedad extends Model
 
     public function especialidads()
     {
-        return $this->belongsToMany('App\Especialidad');
+        return $this->belongsTo('App\Especialidad');
     }
 
     //PONER EN APP->ESPECIALIDAD
     //public function enfermedads()
     //{
-    //    return $this->belongsToMany('App\Enfermedad');
+    //    return $this->hasMany('App\Enfermedad');
     //}
 }
