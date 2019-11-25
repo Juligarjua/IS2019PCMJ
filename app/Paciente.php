@@ -20,4 +20,5 @@ class Paciente extends Model
     {
         return $this->name .' '.$this->surname;
     }
+
 }

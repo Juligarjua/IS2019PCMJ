@@ -17,8 +17,10 @@ class CreateMedicosTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
-            $table->string('especialidad');
+        $table->string('especialidad');
             $table->timestamps();
+
+
         });    }
 
     /**
