@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enfermedad;
 use Illuminate\Http\Request;
 
 use App\Especialidad;
