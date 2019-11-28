@@ -16,10 +16,11 @@ class CreateTratamientosTable extends Migration
         Schema::create('tratamientos', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha_inicio');
-            $table->dateTime('fecha_final');
+            $table->dateTime('fecha_fin');
             $table->String('descripcion');
             $table->Integer('unidades');
             $table->Integer('frecuencia');
+            $table->unsignedInteger('paciente_id');
             $table->timestamps();
 
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');

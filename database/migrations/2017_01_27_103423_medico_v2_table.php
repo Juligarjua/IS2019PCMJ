@@ -35,13 +35,5 @@ class MedicoV2Table extends Migration
     public function down()
     {
         Schema::drop('medicos');
-
-        Schema::create('medicos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('especialidad');
-            $table->timestamps();
-        });
     }
 }
