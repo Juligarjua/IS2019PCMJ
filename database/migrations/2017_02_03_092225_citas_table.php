@@ -16,6 +16,9 @@ class CitasTable extends Migration
         Schema::create('citas', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha_hora');
+            $table->enum('lugar', ['Doctor Fleming', 'Esperanza Macarena (María Auxiliadora)',
+                'Policlínico Virgen Macarena','San Jerónimo','Virgen de los Reyes (Marqués de Paradas)',
+                'H.U. Virgen del Rocío']);
             $table->unsignedInteger('medico_id'); // 11 digitos;
             $table->unsignedInteger('paciente_id');
             $table->timestamps();
