@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Especialidad;
+use App\Enfermedad;
 use Illuminate\Http\Request;
 
-use App\Medico;
-
-class MedicoController extends Controller
+class EnfermedadController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +14,9 @@ class MedicoController extends Controller
      */
     public function index()
     {
-        $medicos = Medico::all();
+        $enfermedads = Enfermedad::all();
 
-        return view('medicos/index',['medicos'=>$medicos]);
-    /**pasa todos los medicos de la vista que se muestra
-    */
+        return view('enfermedads/index',['enfermedads'=>$enfermedads]);
     }
 
     /**
@@ -37,10 +27,9 @@ class MedicoController extends Controller
     public function create()
     {
         //
-        $especialidades = Especialidad::all()->pluck('name','id');
+        $pacientes = Paciente::all()->pluck('name','id');
 
-        return view('medicos/create',['especialidades'=>$especialidades]);
-
+        return view('enfermedads/create',['pacientes'=>$pacientes]);
     }
 
     /**
@@ -53,17 +42,15 @@ class MedicoController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'especialidad_id' => 'required|exists:especialidads,id'
+            'paciente_id' => 'required|exists:pacientes,id'
         ]);
-        $medico = new Medico($request->all());
-        $medico->save();
+        $enfermedad = new Enfermedad($request->all());
+        $enfermedad->save();
 
-        // return redirect('especialidades');
 
-        flash('Medico creado correctamente');
+        flash('Enfermedad creada correctamente');
 
-        return redirect()->route('medicos.index');
+        return redirect()->route('enfermedads.index');
     }
 
     /**
@@ -87,12 +74,12 @@ class MedicoController extends Controller
     {
         //
 
-        $medico = Medico::find($id);
+        $enfermedad = Enfermedad::find($id);
 
-        $especialidades = Especialidad::all()->pluck('name','id');
+        $enfermedades = Enfermedad::all()->pluck('name','id');
 
 
-        return view('medicos/edit',['medico'=> $medico, 'especialidades'=>$especialidades ]);
+        return view('enfermedads/edit',['enfermedad'=> $enfermedad, 'enfermedades'=>$enfermedades ]);
     }
 
     /**
@@ -104,20 +91,20 @@ class MedicoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $this->validate($request, [
             'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'especialidad_id' => 'required|exists:especialidads,id'
+            'paciente_id' => 'required|exists:pacientes,id'
         ]);
 
-        $medico = Medico::find($id);
-        $medico->fill($request->all());
+        $enfermedad = Enfermedad::find($id);
+        $enfermedad->fill($request->all());
 
-        $medico->save();
+        $enfermedad->save();
 
-        flash('Medico modificado correctamente');
+        flash('Enfermedad modificada correctamente');
 
-        return redirect()->route('medicos.index');
+        return redirect()->route('enfermedads.index');
     }
 
     /**
@@ -128,10 +115,11 @@ class MedicoController extends Controller
      */
     public function destroy($id)
     {
-        $medico = Medico::find($id);
-        $medico->delete();
-        flash('Medico borrado correctamente');
+        //
+        $enfermedad = Enfermedad::find($id);
+        $enfermedad->delete();
+        flash('Enfermedad borrada correctamente');
 
-        return redirect()->route('medicos.index');
+        return redirect()->route('enfermedads.index');
     }
 }
