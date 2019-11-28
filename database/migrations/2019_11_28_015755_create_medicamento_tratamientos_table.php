@@ -16,6 +16,10 @@ class CreateMedicamentoTratamientosTable extends Migration
         Schema::create('medicamento_tratamientos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+
+            $table->foreign('tratamiendo_id')->references('id')->on('medicamentos');
+            $table->foreign('medicamento_id')->references('id')->on('tratamientos');
+
         });
     }
 

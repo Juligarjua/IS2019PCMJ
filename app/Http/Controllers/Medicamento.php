@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\medicamento_tratamiento;
 use Illuminate\Http\Request;
 
 class Medicamento extends Controller
@@ -13,7 +14,9 @@ class Medicamento extends Controller
      */
     public function index()
     {
-        //
+        $medicamentos = Medicamento::all();
+
+        return view('medicamentos/index',['medicamentos'=>$medicamentos]);
     }
 
     /**
@@ -23,7 +26,7 @@ class Medicamento extends Controller
      */
     public function create()
     {
-        //
+        return view('medicamentos/create');
     }
 
     /**
@@ -34,7 +37,21 @@ class Medicamento extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombreComercial' => 'required|max:255',
+            'composicion' => 'required|max:255',
+            'presentacion'=> 'required|max:255',
+            'enlaceOnline' => 'required|max:255',
+
+        ]);
+        $medicamento = new Medicamento($request->all());
+        $medicamento->save();
+
+        // return redirect('especialidades');
+
+        flash('Medicamento creado correctamente');
+
+        return redirect()->route('medicamento.index');
     }
 
     /**
@@ -45,7 +62,9 @@ class Medicamento extends Controller
      */
     public function show($id)
     {
-        //
+
+
+
     }
 
     /**
@@ -56,7 +75,9 @@ class Medicamento extends Controller
      */
     public function edit($id)
     {
-        //
+        $medicamento = Medicamento::find($id);
+
+        return view('medicamentos/edit')->with('medicamento', $medicamento);
     }
 
     /**
@@ -68,7 +89,21 @@ class Medicamento extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombreComercial' => 'required|max:255',
+            'composicion' => 'required|max:255',
+            'presentacion'=> 'required|max:255',
+            'enlaceOnline' => 'required|max:255',
+        ]);
+
+        $medicamento= Medicamento::find($id);
+        $medicamento->fill($request->all());
+
+        $medicamento->save();
+
+        flash('Medicamento modificado correctamente');
+
+        return redirect()->route('medicamento.index');
     }
 
     /**
@@ -79,6 +114,10 @@ class Medicamento extends Controller
      */
     public function destroy($id)
     {
-        //
+        $medicamento = Medicamento::find($id);
+        $medicamento->delete();
+        flash('Medicamento borrado correctamente');
+
+        return redirect()->route('medicamento.index');
     }
 }
