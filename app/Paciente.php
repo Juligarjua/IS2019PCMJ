@@ -19,7 +19,6 @@ class Paciente extends Model
        return $this->belongsTo('App\Enfermedad');
     }
 
-
     public function getFullNameAttribute()
     {
         return $this->name .' '.$this->surname;
