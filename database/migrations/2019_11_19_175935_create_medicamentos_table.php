@@ -19,9 +19,10 @@ class CreateMedicamentosTable extends Migration
             $table->increments('composicion');
             $table->increments('presentacion');
             $table->increments('enlaceOnline');
+            $table->unsignedInteger('tratamiento_id');
             $table->timestamps();
 
-            $table->foreign('tratamiendo_id')->references('id')->on('tratamientos')->onDelete('cascade');
+            $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade');
         });
     }
 
@@ -33,11 +34,6 @@ class CreateMedicamentosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('medicamentos');
-        $table->increments('id');
-        $table->increments('nombreComercial');
-        $table->increments('composicion');
-        $table->increments('presentacion');
-        $table->increments('enlaceOnline');
-        $table->timestamps();
+
     }
 }
