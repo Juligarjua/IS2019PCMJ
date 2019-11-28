@@ -41,9 +41,7 @@ class EspecialidadController extends Controller
     public function create()
     {
 
-        $enfermedads = Enfermedad::all()->pluck('name','id');
-
-        return view('especialidades/create',['enfermedads'=>$enfermedads]);
+        return view('especialidades/create');
     }
 
     /**
@@ -56,9 +54,7 @@ class EspecialidadController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'enfermedad_id' => 'required|exists:enfermedads,id'
-
+            'name' => 'required|max:255'
         ]);
 
         //
@@ -94,9 +90,7 @@ class EspecialidadController extends Controller
 
         $especialidad = Especialidad::find($id);
 
-        $enfermedades = Enfermedad::all()->pluck('name','id');
-
-        return view('especialidades/edit')->with(['especialidad', $especialidad,'enfermedades'=> $enfermedades]);
+        return view('especialidades/edit')->with('especialidad', $especialidad);
     }
 
     /**
@@ -110,7 +104,6 @@ class EspecialidadController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'enfermedad_id' => 'required|exists:enfermedads,id'
         ]);
 
         $especialidad = Especialidad::find($id);
