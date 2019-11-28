@@ -54,6 +54,8 @@ class PacienteController extends Controller
         ]);
 
         //TODO: crear validación propia para nuhsa
+
+
         $paciente = new Paciente($request->all());
         $paciente->save();
 
