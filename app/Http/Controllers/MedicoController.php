@@ -42,7 +42,7 @@ class MedicoController extends Controller
 
     }
 
-    /**
+    /** muestra formulario de creación
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -76,7 +76,7 @@ class MedicoController extends Controller
         //
     }
 
-    /**
+    /** el detalle de un paciente es mostrar (show). el detalle de un modelo.
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -84,7 +84,7 @@ class MedicoController extends Controller
      */
     public function edit($id)
     {
-        //
+        //le paso como parámetro la id. para que no saliera habría que poner "--model=photo"
 
         $medico = Medico::find($id);
 
@@ -94,7 +94,7 @@ class MedicoController extends Controller
         return view('medicos/edit',['medico'=> $medico, 'especialidades'=>$especialidades ]);
     }
 
-    /**
+    /** muestra formulario de edicción. si ese modelo no se edita lo dejamos vacío
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -119,7 +119,7 @@ class MedicoController extends Controller
         return redirect()->route('medicos.index');
     }
 
-    /**
+    /** actualizar
      * Remove the specified resource from storage.
      *
      * @param  int  $id
