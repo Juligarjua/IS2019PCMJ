@@ -25,7 +25,8 @@ class MedicoController extends Controller
         $medicos = Medico::all();
 
         return view('medicos/index',['medicos'=>$medicos]);
-
+    /**pasa todos los medicos de la vista que se muestra
+    */
     }
 
     /**
