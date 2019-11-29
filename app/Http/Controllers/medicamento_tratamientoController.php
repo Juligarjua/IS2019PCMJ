@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class medicamento_tratamiento extends Controller
+class medicamento_tratamientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +23,9 @@ class medicamento_tratamiento extends Controller
      */
     public function create()
     {
-        $medicamentos = Medicamento::all()->pluck('nombreComercial','id');
+        $medicamentos = MedicamentoController::all()->pluck('nombreComercial','id');
         $tratamientos = Tratamiento::all()->pluck('descripcion','id');
-        return view('medicamento_tratamiento/create',['medicamentos'=>$medicamentos, 'tratamientos'=>$tratamientos]);
+        return view('medicamento_tratamientoController/create',['medicamentos'=>$medicamentos, 'tratamientos'=>$tratamientos]);
     }
 
     /**
@@ -40,13 +40,13 @@ class medicamento_tratamiento extends Controller
             'medicamento_id' => 'required|exists:medicamento,id',
             'tratamiento_id' => 'required|exists:tratamiento,id'
         ]);
-        $medicamento_tratamiento = new medicamento_tratamiento($request->all());
+        $medicamento_tratamiento = new medicamento_tratamientoController($request->all());
         $medicamento_tratamiento->save();
 
 
-        flash('medicamento_tratamiento creado correctamente');
+        flash('medicamento_tratamientoController creado correctamente');
 
-        return redirect()->route('medicamento_tratamiento.index');
+        return redirect()->route('medicamento_tratamientoController.index');
     }
 
     /**
@@ -68,13 +68,13 @@ class medicamento_tratamiento extends Controller
      */
     public function edit($id)
     {
-        $medicamento_tratamiento = medicamento_tratamiento::find($id);
+        $medicamento_tratamiento = medicamento_tratamientoController::find($id);
 
-        $medicamentos = Medicamento::all()->pluck('nombreComercial','id');
+        $medicamentos = MedicamentoController::all()->pluck('nombreComercial','id');
         $tratamientos = Tratamiento::all()->pluck('descripcion','id');
 
 
-        return view('medicos/edit',['medicamento_tratamiento'=> $medicamento_tratamiento, 'medicamentos'=>$medicamentos, 'tratamientos'=>$tratamientos ]);
+        return view('medicos/edit',['medicamento_tratamientoController'=> $medicamento_tratamiento, 'medicamentos'=>$medicamentos, 'tratamientos'=>$tratamientos ]);
     }
 
     /**
@@ -91,14 +91,14 @@ class medicamento_tratamiento extends Controller
             'tratamiento_id' => 'required|exists:tratamiento,id'
         ]);
 
-        $medicamento_tratamiento = medicamento_tratamiento::find($id);
+        $medicamento_tratamiento = medicamento_tratamientoController::find($id);
         $medicamento_tratamiento->fill($request->all());
 
         $medicamento_tratamiento->save();
 
         flash('Medicamento_tratamiento modificado correctamente');
 
-        return redirect()->route('medicamento_tratamiento.index');
+        return redirect()->route('medicamento_tratamientoController.index');
     }
 
     /**
