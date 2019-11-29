@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use App\Paciente;
 
-class PacienteController extends Controller
+class userController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,11 +14,9 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
 
-        $pacientes = Paciente::all();
-
-        return view('pacientes/index',['pacientes'=>$pacientes]);
+        return view('users/index')->with('users', $users);
     }
 
     /**
@@ -33,9 +26,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        //
-        return view('pacientes/create');
-
+        return view('users/create');
     }
 
     /**
@@ -46,24 +37,23 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|max:255'
+            'email' => 'required|exits:connection.staff,email',
+            'password' => 'required|max:255'
+
+
         ]);
 
-        //TODO: crear validación propia para nuhsa
+        //
+        $user = new User($request->all());
+        $user->save();
 
+        // return redirect('users');
 
-        $paciente = new Paciente($request->all());
-        $paciente->save();
+        flash('User creado correctamente');
 
-        // return redirect('especialidades');
-
-        flash('Paciente creado correctamente');
-
-        return redirect()->route('pacientes.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -74,7 +64,7 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        // TODO: Mostrar las citas de un paciente
+        //
     }
 
     /**
@@ -85,9 +75,9 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        $paciente = Paciente::find($id);
+        $user = User::find($id);
 
-        return view('pacientes/edit',['paciente'=> $paciente ]);
+        return view('users/edit')->with('user', $user);
     }
 
     /**
@@ -101,20 +91,19 @@ class PacienteController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|max:255'
+            'email' => 'required|exits:connection.staff,email',
+            'password' => 'required|max:255'
+
         ]);
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
 
-        $paciente = Paciente::find($id);
-        $paciente->fill($request->all());
+        // return redirect('users');
 
-        $paciente->save();
+        flash('User modificado correctamente');
 
-        flash('Paciente modificado correctamente');
-
-        return redirect()->route('pacientes.index');
-
-
+        return redirect()->route('users.index');
     }
 
     /**
@@ -125,10 +114,10 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        $paciente = Paciente::find($id);
-        $paciente->delete();
-        flash('Paciente borrado correctamente');
+        $user = User::find($id);
+        $user->delete();
+        flash('User borrado correctamente');
 
-        return redirect()->route('pacientes.index');
+        return redirect()->route('users.index');
     }
 }

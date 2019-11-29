@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicosTable extends Migration
+class CreateTratamientosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateMedicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicos', function (Blueprint $table) {
+        Schema::create('tratamientos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('especialidad');
+            $table->dateTime('fecha_inicio');
+            $table->dateTime('fecha_fin');
+            $table->String('descripcion');
+            $table->Integer('unidades');
+            $table->Integer('frecuencia');
             $table->timestamps();
 
 
-        });    }
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -30,6 +33,6 @@ class CreateMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medicos');
+        Schema::dropIfExists('tratamientos');
     }
 }
