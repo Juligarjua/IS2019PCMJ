@@ -18,5 +18,4 @@ class Cita extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-
 }
