@@ -11,7 +11,7 @@ class Tratamiento extends Model
 
     public function cita()
     {
-        return $this->belongsToMany('App\Citas')-> using('database\migrations');
+        return $this->belongsToMany('App\Citas')-> using('database\cita_tratamiento');
 
     }
 

@@ -20,7 +20,7 @@ class Cita extends Model
 
     public function tratamiento()
     {
-        return $this->belongsToMany('App\Tratamiento')-> using('database\migrations');
+        return $this->belongsToMany('App\Tratamiento')-> using('database\cita_tratamiento');
     }
 
 
