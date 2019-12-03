@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enfermedad;
-use App\Especialidad;
 use Illuminate\Http\Request;
 
 class EnfermedadController extends Controller
@@ -28,9 +27,8 @@ class EnfermedadController extends Controller
     public function create()
     {
         //
-        $especialidads = Especialidad::all()->pluck('name','id');
 
-        return view('enfermedads/create',['especialidads'=>$especialidads]);
+        return view('enfermedads/create');
     }
 
     /**
@@ -42,8 +40,7 @@ class EnfermedadController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'especialidads_id' => 'required|exists:especialidads,id'
+            'name' => 'required|max:255'
         ]);
         $enfermedad = new Enfermedad($request->all());
         $enfermedad->save();
@@ -77,10 +74,7 @@ class EnfermedadController extends Controller
 
         $enfermedad = Enfermedad::find($id);
 
-        $especialidades = Especialidad::all()->pluck('name','id');
-
-
-        return view('enfermedads/edit',['enfermedad'=> $enfermedad, 'especialidades'=>$especialidades ]);
+        return view('enfermedads/edit',['enfermedad'=> $enfermedad ]);
     }
 
     /**
@@ -94,8 +88,7 @@ class EnfermedadController extends Controller
     {
         //
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'especialidad_id' => 'required|exists:especialidadstes,id'
+            'name' => 'required|max:255'
         ]);
 
         $enfermedad = Enfermedad::find($id);
