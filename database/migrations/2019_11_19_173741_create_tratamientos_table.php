@@ -20,7 +20,10 @@ class CreateTratamientosTable extends Migration
             $table->String('descripcion');
             $table->Integer('unidades');
             $table->Integer('frecuencia');
+            $table->unsignedInteger('medicamento_id');
             $table->timestamps();
+
+            $table->foreign('medicamento_id')->references('id')->on('medicamentos')->onDelete('cascade');
 
 
         });
