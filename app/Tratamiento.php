@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tratamiento extends Model
 {
     //
-    protected $fillable = ['fecha_inicio','fecha_fin','descripcion','unidades','frecuencia','medicamento_id'];
+    protected $fillable = ['fecha_inicio','fecha_fin','descripcion','unidades','frecuencia','medicamento_id','cita_id'];
 
-    public function paciente()
+    public function cita()
     {
-        return $this->hasMany('App\Paciente');
+        return $this->belongsToMany('App\Citas')-> using('database\migrations');
 
     }
 
