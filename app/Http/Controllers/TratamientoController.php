@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Medicamento;
 use App\Tratamiento;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        return view('tratamientos/create');
+        $medicamentos = Medicamento::all()->pluck('name','id');
+
+        return view('tratamientos/create',['medicamentos'=>$medicamentos]);
 
     }
 
@@ -44,7 +47,7 @@ class TratamientoController extends Controller
             'descripcion' => 'required|max:255',
             'unidades' => 'required|numeric',
             'frecuencia' => 'required|numeric',
-
+            'medicamento_id' => 'required|exists:medicamentos,id'
         ]);
         $tratamiento = new Tratamiento($request->all());
         $tratamiento->save();
@@ -75,8 +78,10 @@ class TratamientoController extends Controller
     public function edit($id)
     {
         $tratamiento = Tratamiento::find($id);
+        $medicamento = Medicamento::all()->pluck('nombreComercial','id');
 
-        return view('tratamientos/edit')->with('tratamientos', $tratamiento);
+
+        return view('tratamientos/edit',[ 'tratamiento'=>$tratamiento ,'medicamento'=> $medicamento]);
     }
 
     /**
@@ -94,6 +99,8 @@ class TratamientoController extends Controller
             'descripcion' => 'required|max:255',
             'unidades' => 'required|numeric',
             'frecuencia' => 'required|numeric',
+            'medicamento_id' => 'required|exists:medicamentos,id'
+
         ]);
 
         $tratamiento = Tratamiento::find($id);
