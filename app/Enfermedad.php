@@ -6,16 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enfermedad extends Model
 {
-    protected $fillable = ['name','especialidad_id'];
+    protected $fillable = ['name'];
 
     public function pacientes()
     {
         return $this->hasMany('App\Pacientes');
     }
 
-    public function especialidads()
-    {
-        return $this->belongsTo('App\Especialidad');
-    }
+
 
 }
