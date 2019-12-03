@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tratamiento extends Model
 {
     //
-    protected $fillable = ['fecha_inicio','fecha_fin','descripcion','unidades','frecuencia'];
+    protected $fillable = ['fecha_inicio','fecha_fin','descripcion','unidades','frecuencia','medicamento_id'];
 
     public function paciente()
     {
@@ -15,10 +15,9 @@ class Tratamiento extends Model
 
     }
 
-
-    public function medicamento_tratamiento()
+    public function medicamento()
     {
-        return $this->hasMany('App\medicamento_tratamiento');
+        return $this->belongsTo('App\Medicamento');
     }
 
 
