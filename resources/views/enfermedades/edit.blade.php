@@ -10,11 +10,11 @@
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($especialidad, [ 'route' => ['enfermedades.update',$especialidad->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
+                        {!! Form::model($enfermedad, [ 'route' => ['enfermedades.update',$enfermedad->id], 'method'=>'PUT', 'class'=>'form-inline']) !!}
                         <div class="form-group">
 
                             {!! Form::label('name', 'Nombre de la enfermedad') !!}
-                            {!! Form::text('name',$especialidad->name,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            {!! Form::text('name',$enfermedad->name,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         {!! Form::submit('Actualizar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}

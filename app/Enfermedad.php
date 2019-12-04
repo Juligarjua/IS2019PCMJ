@@ -10,7 +10,7 @@ class Enfermedad extends Model
 
     public function pacientes()
     {
-        return $this->hasMany('App\Pacientes');
+        return $this->hasMany('App\Paciente');
     }
 
 

@@ -14,7 +14,7 @@ class MedicamentoController extends Controller
      */
     public function index()
     {
-        $medicamentos = MedicamentoController::all();
+        $medicamentos = Medicamento::all();
 
         return view('medicamentos/index',['medicamentos'=>$medicamentos]);
     }
@@ -44,12 +44,10 @@ class MedicamentoController extends Controller
             'enlaceOnline' => 'required|max:255',
 
         ]);
-        $medicamento = new MedicamentoController($request->all());
+        $medicamento = new Medicamento($request->all());
         $medicamento->save();
 
-        // return redirect('especialidades');
-
-        flash('MedicamentoController creado correctamente');
+        flash('Medicamento creado correctamente');
 
         return redirect()->route('medicamentos.index');
     }
@@ -75,9 +73,9 @@ class MedicamentoController extends Controller
      */
     public function edit($id)
     {
-        $medicamento = MedicamentoController::find($id);
+        $medicamento = Medicamento::find($id);
 
-        return view('medicamentos/edit')->with('medicamentos', $medicamento);
+        return view('medicamentos/edit')->with('medicamento', $medicamento);
     }
 
     /**
@@ -96,12 +94,12 @@ class MedicamentoController extends Controller
             'enlaceOnline' => 'required|max:255',
         ]);
 
-        $medicamento= MedicamentoController::find($id);
+        $medicamento= Medicamento::find($id);
         $medicamento->fill($request->all());
 
         $medicamento->save();
 
-        flash('MedicamentoController modificado correctamente');
+        flash('Medicamento modificado correctamente');
 
         return redirect()->route('medicamentos.index');
     }
@@ -114,9 +112,9 @@ class MedicamentoController extends Controller
      */
     public function destroy($id)
     {
-        $medicamento = MedicamentoController::find($id);
+        $medicamento = Medicamento::find($id);
         $medicamento->delete();
-        flash('MedicamentoController borrado correctamente');
+        flash('Medicamento borrado correctamente');
 
         return redirect()->route('medicamentos.index');
     }

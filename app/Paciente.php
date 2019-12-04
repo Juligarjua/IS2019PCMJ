@@ -14,18 +14,14 @@ class Paciente extends Model
     {
         return $this->hasMany('App\Cita');
     }
-    public function tratamientos()
-    {
-        return $this->belongsTo('App\Tratamiento');
-    }
-
-    public function getFullNameAttribute()
-    {
-        return $this->name .' '.$this->surname;
-    }
     public function enfermedades()
     {
         return $this->belongsTo('App\Enfermedad');
     }
+    public function getFullNameAttribute()
+    {
+        return $this->name .' '.$this->surname;
+    }
+
 
 }
