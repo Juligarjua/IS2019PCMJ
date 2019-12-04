@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    protected $fillable = ['fecha_hora','lugar', 'medico_id', 'paciente_id','tratamiento_id'];
+    protected $fillable = ['fecha_hora','lugar', 'medico_id', 'paciente_id'];
 
     public function medico()
     {
@@ -18,9 +18,9 @@ class Cita extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function tratamiento()
+    public function medicamento()
     {
-        return $this->belongsToMany('App\Tratamiento')-> using('database\cita_tratamiento');
+        return $this->belongsToMany('App\Medicamento')->withPivot('fecha_inicio','fecha_fin','descripcion','unidades','frecuencia');
     }
 
 
