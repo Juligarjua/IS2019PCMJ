@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Enfermedad;
-use App\Tratamiento;
 use Illuminate\Http\Request;
 use App\Paciente;
 
@@ -37,9 +36,8 @@ class PacienteController extends Controller
     {
         //
         $enfermedads = Enfermedad::all()->pluck('name','id');
-        $tratamientos = Tratamiento::all()->pluck('descripcion','id');
 
-        return view('pacientes/create',['enfermedads'=>$enfermedads,'tratamientos'=>$tratamientos]);
+        return view('pacientes/create',['enfermedads'=>$enfermedads]);
 
     }
 
@@ -57,7 +55,7 @@ class PacienteController extends Controller
             'surname' => 'required|max:12',
             'nuhsa' => 'required|nuhsa|max:255|paciente,nuhsa',
             'enfermedad_id' => 'required|exists:enfermedads,id',
-            'tratamiento_id' => 'required|exists:tratamientos,id'
+
 
 
         ]);
@@ -96,12 +94,12 @@ class PacienteController extends Controller
     {
         $paciente = Paciente::find($id);
         $enfermedades = Enfermedad::all()->pluck('name','id');
-        $tratamientos = Tratamiento::all()->pluck('descripcion','id');
 
 
 
 
-        return view('pacientes/edit',['paciente'=> $paciente,'enfermedades'=> $enfermedades,'tratamientos'=>$tratamientos ]);
+
+        return view('pacientes/edit',['paciente'=> $paciente,'enfermedades'=> $enfermedades ]);
     }
 
     /**
@@ -118,7 +116,7 @@ class PacienteController extends Controller
             'surname' => 'required|max:255',
             'nuhsa' => 'required|nuhsa|max:12|paciente,nuhsa',
             'enfermedad_id' => 'required|exists:enfermedads,id',
-            'tratamiento_id' => 'required|exists:tratamientos,id'
+
 
         ]);
 

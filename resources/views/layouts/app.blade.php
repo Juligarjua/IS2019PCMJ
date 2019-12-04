@@ -70,6 +70,11 @@
                                             Especialidades
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/enfermedades') }}">
+                                            Enfermedades
+                                        </a>
+                                    </li>
 
                                     <li>
                                         <a href="{{ url('/pacientes') }}">

@@ -51,7 +51,7 @@ class MedicamentoController extends Controller
 
         flash('MedicamentoController creado correctamente');
 
-        return redirect()->route('medicamento.index');
+        return redirect()->route('medicamentos.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class MedicamentoController extends Controller
     {
         $medicamento = MedicamentoController::find($id);
 
-        return view('medicamentos/edit')->with('medicamento', $medicamento);
+        return view('medicamentos/edit')->with('medicamentos', $medicamento);
     }
 
     /**
@@ -103,7 +103,7 @@ class MedicamentoController extends Controller
 
         flash('MedicamentoController modificado correctamente');
 
-        return redirect()->route('medicamento.index');
+        return redirect()->route('medicamentos.index');
     }
 
     /**
@@ -118,6 +118,6 @@ class MedicamentoController extends Controller
         $medicamento->delete();
         flash('MedicamentoController borrado correctamente');
 
-        return redirect()->route('medicamento.index');
+        return redirect()->route('medicamentos.index');
     }
 }

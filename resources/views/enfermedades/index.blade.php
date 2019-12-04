@@ -9,8 +9,8 @@
 
                     <div class="panel-body">
                         @include('flash::message')
-                        {!! Form::open(['route' => 'enfermedads.create', 'method' => 'get', 'class'=>'inline-important']) !!}
-                        {!!   Form::submit('Crear enfermedads', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::open(['route' => 'enfermedades.create', 'method' => 'get', 'class'=>'inline-important']) !!}
+                        {!!   Form::submit('Crear enfermedades', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
 
@@ -20,17 +20,17 @@
                                 <th>Nombre</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
-                            @foreach ($enfermedads as $enfermedad)
+                            @foreach ($enfermedades as $enfermedad)
                                 <tr>
                                     <td>{{ $enfermedad->name }}</td>
                                     <td>
-                                        {!! Form::open(['route' => ['enfermedads.edit',$enfermedad->id], 'method' => 'get']) !!}
+                                        {!! Form::open(['route' => ['enfermedades.edit',$enfermedad->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
 
                                     </td>
                                     <td>
-                                        {!! Form::open(['route' => ['$enfermedads.destroy',$enfermedad->id], 'method' => 'delete']) !!}
+                                        {!! Form::open(['route' => ['enfermedades.destroy',$enfermedad->id], 'method' => 'delete']) !!}
                                         {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                                         {!! Form::close() !!}
 

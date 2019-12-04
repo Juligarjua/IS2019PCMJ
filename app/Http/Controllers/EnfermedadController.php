@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enfermedad;
 use Illuminate\Http\Request;
 
+
 class EnfermedadController extends Controller
 {
     /**
@@ -14,9 +15,9 @@ class EnfermedadController extends Controller
      */
     public function index()
     {
-        $enfermedads = Enfermedad::all();
+        $enfermedades = Enfermedad::all();
 
-        return view('enfermedads/index',['enfermedads'=>$enfermedads]);
+        return view('enfermedades/index',['enfermedades'=>$enfermedades]);
     }
 
     /**
@@ -28,7 +29,7 @@ class EnfermedadController extends Controller
     {
         //
 
-        return view('enfermedads/create');
+        return view('enfermedades/create');
     }
 
     /**
@@ -48,7 +49,7 @@ class EnfermedadController extends Controller
 
         flash('Enfermedad creada correctamente');
 
-        return redirect()->route('enfermedads.index');
+        return redirect()->route('enfermedades.index');
     }
 
     /**
@@ -74,7 +75,7 @@ class EnfermedadController extends Controller
 
         $enfermedad = Enfermedad::find($id);
 
-        return view('enfermedads/edit',['enfermedad'=> $enfermedad ]);
+        return view('enfermedades/edit',['enfermedad'=> $enfermedad ]);
     }
 
     /**
@@ -98,7 +99,7 @@ class EnfermedadController extends Controller
 
         flash('Enfermedad modificada correctamente');
 
-        return redirect()->route('enfermedads.index');
+        return redirect()->route('enfermedades.index');
     }
 
     /**
@@ -114,6 +115,6 @@ class EnfermedadController extends Controller
         $enfermedad->delete();
         flash('Enfermedad borrada correctamente');
 
-        return redirect()->route('enfermedads.index');
+        return redirect()->route('enfermedades.index');
     }
 }
