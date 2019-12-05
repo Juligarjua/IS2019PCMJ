@@ -1,21 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
-use App\Enfermedad;
 use Illuminate\Http\Request;
-
 use App\Especialidad;
-
-
 class EspecialidadController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,15 +16,9 @@ class EspecialidadController extends Controller
     public function index()
     {
         //
-
-
         $especialidades = Especialidad::all();
-
         return view('especialidades/index')->with('especialidades', $especialidades);
-
-
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -40,14 +26,8 @@ class EspecialidadController extends Controller
      */
     public function create()
     {
-        //
-        $enfermedades = Enfermedad::all()->pluck('name','id');
-
-        return view('medicos/create',['enfermedades'=>~$enfermedades]);
-
+        return view('especialidades/create');
     }
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -56,23 +36,16 @@ class EspecialidadController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|max:255',
-            'enfermedad_id' => 'required|exists:enfermedades,id'
         ]);
-
         //
         $especialidad = new Especialidad($request->all());
         $especialidad->save();
-
-        // return redirect('enfermedades');
-
+        // return redirect('especialidades');
         flash('Especialidad creada correctamente');
-
         return redirect()->route('especialidades.index');
     }
-
     /**
      * Display the specified resource.
      *
@@ -83,7 +56,6 @@ class EspecialidadController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -92,15 +64,9 @@ class EspecialidadController extends Controller
      */
     public function edit($id)
     {
-
         $especialidad = Especialidad::find($id);
-
-        $enfermedades = Enfermedad::all()->pluck('name','id');
-
-
-        return view('especialidades/edit',['especialidad'=> $especialidad, 'enfermedades'=>$enfermedades ]);
+        return view('especialidades/edit')->with('especialidad', $especialidad);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -112,22 +78,13 @@ class EspecialidadController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'enfermedad_id'=>'required|exists:especialidads,id'
         ]);
-
         $especialidad = Especialidad::find($id);
         $especialidad->fill($request->all());
-
         $especialidad->save();
-
         flash('Especialidad modificada correctamente');
-
         return redirect()->route('especialidades.index');
-
-
     }
-
-
     /**
      * Remove the specified resource from storage.
      *
@@ -139,15 +96,12 @@ class EspecialidadController extends Controller
         $especialidad = Especialidad::find($id);
         $especialidad->delete();
         flash('Especialidad borrada correctamente');
-
         return redirect()->route('especialidades.index');
     }
-
     public function destroyAll()
     {
         Especialidad::truncate();
         flash('Todas las especialidades borradas correctamente');
-
         return redirect()->route('especialidades.index');
     }
 }

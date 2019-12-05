@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreatePacientesTable extends Migration
 {
     /**
@@ -18,12 +16,9 @@ class CreatePacientesTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('nuhsa');
-
             $table->timestamps();
-
         });
     }
-
     /**
      * Reverse the migrations.
      *

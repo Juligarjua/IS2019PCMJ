@@ -24,9 +24,9 @@ class PacientesAseguradoraTable extends Migration
             $table->unsignedInteger('enfermedad_id');
             $table->unsignedInteger('aseguradora_id')->nullable();
             $table->timestamps();
-            $table->foreign('aseguradora_id')->references('id')->on('aseguradoras');
 
             $table->foreign('enfermedad_id')->references('id')->on('enfermedads')->onDelete('cascade');
+            $table->foreign('aseguradora_id')->references('id')->on('aseguradoras');
         });
     }
 
