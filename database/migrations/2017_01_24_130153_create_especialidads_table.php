@@ -18,6 +18,8 @@ class CreateEspecialidadsTable extends Migration
             $table->string('name');
             $table->timestamps();
 
+            $table->foreign('enfermedad_id')->references('id')->on('enfermedades');
+
         });
     }
 
