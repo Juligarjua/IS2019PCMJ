@@ -24,7 +24,7 @@ class CitasTable extends Migration
             $table->timestamps();
 
             $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
-            $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade');
+            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
         });
     }
 
