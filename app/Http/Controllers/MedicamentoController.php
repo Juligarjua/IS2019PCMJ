@@ -16,7 +16,7 @@ class MedicamentoController extends Controller
     {
         $medicamentos = Medicamento::all();
 
-        return view('medicamentos/index',['medicamentos'=>$medicamentos]);
+        return view('medicamentos/index')->with('medicamentos', $medicamentos);
     }
 
     /**
@@ -60,9 +60,7 @@ class MedicamentoController extends Controller
      */
     public function show($id)
     {
-
-
-
+        //
     }
 
     /**

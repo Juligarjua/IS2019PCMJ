@@ -10,8 +10,11 @@ class Medicamento extends Model
 
     public function citas()
     {
-
         return $this->belongsToMany('App\Cita')->withPivot('fecha_inicio','fecha_fin','descripcion','unidades','frecuencia');
+    }
+    public function getFullNameAttribute()
+    {
+        return $this->nombreComercial .' '.$this->composicion;
     }
 
 }
