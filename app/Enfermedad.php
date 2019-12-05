@@ -12,7 +12,10 @@ class Enfermedad extends Model
     {
         return $this->hasMany('App\Paciente');
     }
-
+    public function especialidad()
+    {
+        return $this->hasMany('App\Especialidades');
+    }
 
 
 }
