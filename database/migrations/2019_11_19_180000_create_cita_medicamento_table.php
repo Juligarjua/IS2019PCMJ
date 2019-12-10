@@ -13,7 +13,7 @@ class CreateCitaMedicamentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cita_medicamentos', function (Blueprint $table) {
+        Schema::create('CitaMedicamento', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('cita_id');
             $table->unsignedInteger('medicamento_id');
@@ -38,6 +38,6 @@ class CreateCitaMedicamentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tratamientos');
+        Schema::dropIfExists('CitaMedicamento');
     }
 }
