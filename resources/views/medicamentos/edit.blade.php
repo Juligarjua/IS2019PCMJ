@@ -28,6 +28,10 @@
                             {!! Form::label('enlaceOnline', 'enlaceOnline del medico') !!}
                             {!! Form::text('enlaceOnline',$medicamento->enlaceOnline,['class'=>'form-control', 'required']) !!}
                         </div>
+                        <div class="form-group">
+                            {!! Form::label('fecha_inico', 'fecha_inicio tratamiento') !!}
+                            {!! Form::text('fecha_inicio',$medicamento->enlaceOnline,['class'=>'form-control']) !!}
+                        </div>
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

@@ -75,13 +75,16 @@
                                             Enfermedades
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="{{ url('/pacientes') }}">
                                             Pacientes
                                         </a>
                                     </li>
-
+                                    <li>
+                                        <a href="{{ url('/medicamentos') }}">
+                                            Medicamentos
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ url('/citas') }}">
                                             Citas
