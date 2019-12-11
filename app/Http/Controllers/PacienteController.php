@@ -53,7 +53,7 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|max:255',
+            'nuhsa' => 'required|nuhsa|unique:pacientes,nuhsa|max:255',
             'enfermedad_id' => 'required|exists:enfermedads,id',
 
 
