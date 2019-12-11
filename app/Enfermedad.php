@@ -8,14 +8,14 @@ class Enfermedad extends Model
 {
     protected $fillable = ['name','especialidad_id'];
 
-    public function pacientes()
+    public function paciente()
     {
-        return $this->hasMany('App\Pacientes');
+        return $this->hasMany('App\Paciente');
     }
-
-    public function especialidads()
+    public function especialidad()
     {
         return $this->belongsTo('App\Especialidad');
     }
+
 
 }

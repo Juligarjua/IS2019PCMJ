@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enfermedad;
 use Illuminate\Http\Request;
 use App\Paciente;
 
@@ -34,7 +35,9 @@ class PacienteController extends Controller
     public function create()
     {
         //
-        return view('pacientes/create');
+        $enfermedades = Enfermedad::all()->pluck('name','id');
+
+        return view('pacientes/create',['enfermedades'=>$enfermedades]);
 
     }
 
@@ -50,7 +53,11 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|max:255'
+            'nuhsa' => 'required|nuhsa|unique:pacientes,nuhsa|max:255',
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+
+
+
         ]);
 
         //TODO: crear validación propia para nuhsa
@@ -86,8 +93,13 @@ class PacienteController extends Controller
     public function edit($id)
     {
         $paciente = Paciente::find($id);
+        $enfermedades = Enfermedad::all()->pluck('name','id');
 
-        return view('pacientes/edit',['paciente'=> $paciente ]);
+
+
+
+
+        return view('pacientes/edit',['paciente'=> $paciente,'enfermedades'=> $enfermedades ]);
     }
 
     /**
@@ -102,7 +114,10 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|max:255'
+            'nuhsa' => 'required|nuhsa|unique:pacientes,nuhsa|max:12',
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+
+
         ]);
 
         $paciente = Paciente::find($id);

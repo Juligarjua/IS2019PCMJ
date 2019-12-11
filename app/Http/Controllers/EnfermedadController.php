@@ -6,6 +6,7 @@ use App\Enfermedad;
 use App\Especialidad;
 use Illuminate\Http\Request;
 
+
 class EnfermedadController extends Controller
 {
     /**
@@ -15,9 +16,9 @@ class EnfermedadController extends Controller
      */
     public function index()
     {
-        $enfermedads = Enfermedad::all();
+        $enfermedades = Enfermedad::all();
 
-        return view('enfermedads/index',['enfermedads'=>$enfermedads]);
+        return view('enfermedades/index',['enfermedades'=>$enfermedades]);
     }
 
     /**
@@ -27,10 +28,9 @@ class EnfermedadController extends Controller
      */
     public function create()
     {
-        //
-        $especialidads = Especialidad::all()->pluck('name','id');
+        $especialidades = Especialidad::all()->pluck('name','id');
 
-        return view('enfermedads/create',['especialidads'=>$especialidads]);
+        return view('enfermedades/create',['especialidades'=>$especialidades]);
     }
 
     /**
@@ -43,7 +43,7 @@ class EnfermedadController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'especialidads_id' => 'required|exists:especialidads,id'
+            'especialidad_id' => 'required|exists:especialidads,id'
         ]);
         $enfermedad = new Enfermedad($request->all());
         $enfermedad->save();
@@ -51,7 +51,7 @@ class EnfermedadController extends Controller
 
         flash('Enfermedad creada correctamente');
 
-        return redirect()->route('enfermedads.index');
+        return redirect()->route('enfermedades.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class EnfermedadController extends Controller
         $especialidades = Especialidad::all()->pluck('name','id');
 
 
-        return view('enfermedads/edit',['enfermedad'=> $enfermedad, 'especialidades'=>$especialidades ]);
+        return view('enfermedades/edit',['enfermedad'=> $enfermedad, 'especialidades'=>$especialidades ]);
     }
 
     /**
@@ -95,7 +95,7 @@ class EnfermedadController extends Controller
         //
         $this->validate($request, [
             'name' => 'required|max:255',
-            'especialidad_id' => 'required|exists:especialidadstes,id'
+            'especialidad_id' => 'required|exists:especialidads,id'
         ]);
 
         $enfermedad = Enfermedad::find($id);
@@ -105,7 +105,7 @@ class EnfermedadController extends Controller
 
         flash('Enfermedad modificada correctamente');
 
-        return redirect()->route('enfermedads.index');
+        return redirect()->route('enfermedades.index');
     }
 
     /**
@@ -121,6 +121,6 @@ class EnfermedadController extends Controller
         $enfermedad->delete();
         flash('Enfermedad borrada correctamente');
 
-        return redirect()->route('enfermedads.index');
+        return redirect()->route('enfermedades.index');
     }
 }
