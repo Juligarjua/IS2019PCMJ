@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Medicos</div>
+                    <div class="panel-heading">Medicamentos</div>
 
                     <div class="panel-body">
                         @include('flash::message')
                         {!! Form::open(['route' => 'medicamentos.create', 'method' => 'get','class'=>'inline-important']) !!}
-                        {!!   Form::submit('medicamentos', ['class'=> 'btn btn-primary'])!!}
+                        {!!   Form::submit('Crear medicamento', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
                         <br><br>

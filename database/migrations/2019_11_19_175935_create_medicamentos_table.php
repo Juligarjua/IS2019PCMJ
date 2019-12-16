@@ -15,10 +15,10 @@ class CreateMedicamentosTable extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombreComercial');
-            $table->string('composicion');
-            $table->string('presentacion');
-            $table->string('enlaceOnline');
+            $table->String('nombreComercial');
+            $table->String('composicion');
+            $table->String('presentacion');
+            $table->String('enlaceOnline');
             $table->timestamps();
 
 
