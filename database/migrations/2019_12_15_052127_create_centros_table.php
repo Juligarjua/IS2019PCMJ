@@ -15,7 +15,7 @@ class CreateCentrosTable extends Migration
     {
         Schema::create('centros', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('centro');
+            $table->String('lugar');
             $table->timestamps();
         });
     }
