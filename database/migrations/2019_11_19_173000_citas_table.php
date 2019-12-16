@@ -19,7 +19,8 @@ class CitasTable extends Migration
             $table->enum('lugar', ['Doctor Fleming', 'Esperanza Macarena (María Auxiliadora)',
                 'Policlínico Virgen Macarena','San Jerónimo','Virgen de los Reyes (Marqués de Paradas)',
                 'H.U. Virgen del Rocío']);
-            $table->unsignedInteger('medico_id'); // 11 digitos;
+            $table->unsignedInteger('centro_id');
+            $table->unsignedInteger('medico_id');
             $table->unsignedInteger('paciente_id');
             $table->timestamps();
 

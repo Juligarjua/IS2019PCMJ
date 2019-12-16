@@ -56,6 +56,8 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
+            'cita_id'=> 'required|exists:citas,id'
+
 
         ]);
 
@@ -94,6 +96,8 @@ class CitaController extends Controller
         $pacientes = Paciente::all()->pluck('full_name','id');
 
 
+
+
         return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes]);
     }
 
@@ -110,6 +114,8 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
+            'lugar'=> 'required|exists:citas,id'
+
 
         ]);
         $cita = Cita::find($id);

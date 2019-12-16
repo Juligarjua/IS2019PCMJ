@@ -16,6 +16,8 @@ class MedicamentoController extends Controller
     {
         $medicamentos = Medicamento::all();
 
+        
+
         return view('medicamentos/index')->with('medicamentos', $medicamentos);
     }
 
