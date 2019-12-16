@@ -25,7 +25,7 @@
                                 <th colspan="2">Acciones</th>
                             </tr>
 
-                            @foreach ($Tratamientyos as $tratamiento)
+                            @foreach ($tratamientos as $tratamiento)
 
 
                                 <tr>
@@ -35,7 +35,7 @@
                                     <td>{{ $tratamiento->unidades }}</td>
                                     <td>{{ $tratamiento->frecuencia }}</td>
                                     <td>{{ $tratamiento->medicamento->nombreComercial }}</td>
-                                    <td>{{ $tratamiento->cita->lugar }}</td>
+                                    <td>{{ $tratamiento->cita->fecha_hora }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['tratamientos.edit',$tratamiento->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

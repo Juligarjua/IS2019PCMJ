@@ -66,6 +66,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ url('/tratamientos') }}">
+                                            Tratamientos
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('/especialidades') }}">
                                             Especialidades
                                         </a>
