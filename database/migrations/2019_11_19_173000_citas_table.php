@@ -16,16 +16,14 @@ class CitasTable extends Migration
         Schema::create('citas', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('fecha_hora');
-            $table->enum('lugar', ['Doctor Fleming', 'Esperanza Macarena (María Auxiliadora)',
-                'Policlínico Virgen Macarena','San Jerónimo','Virgen de los Reyes (Marqués de Paradas)',
-                'H.U. Virgen del Rocío']);
-            $table->unsignedInteger('centro_id');
             $table->unsignedInteger('medico_id');
             $table->unsignedInteger('paciente_id');
+            $table->unsignedInteger('centro_id');
             $table->timestamps();
 
             $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
             $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
+            $table->foreign('centro_id')->references('id')->on('centros')->onDelete('cascade');
         });
     }
 
