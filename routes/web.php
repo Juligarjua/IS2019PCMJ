@@ -24,7 +24,6 @@ Route::resource('enfermedades', 'EnfermedadController');
 Route::resource('medicamentos', 'MedicamentoController');
 Route::resource('tratamientos', 'TratamientoController');
 Route::resource('centros', 'CentroController');
-
 Route::resource('citas', 'CitaController');
 
 

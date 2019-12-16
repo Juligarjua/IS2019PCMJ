@@ -23,13 +23,14 @@
                             {!! Form::select('medico_id', $medicos, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('lugar', 'Lugar de la cita') !!}
-                            {!! Form::text('lugar',null,['class'=>'form-control', 'required', 'autofocus']) !!}
-                        </div>
-                        <div class="form-group">
                             {!!Form::label('paciente_id', 'Paciente') !!}
                             <br>
                             {!! Form::select('paciente_id', $pacientes, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('centro_id', 'Centro') !!}
+                            <br>
+                            {!! Form::select('centro_id', $centros, ['class' => 'form-control']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
