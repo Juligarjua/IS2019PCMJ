@@ -25,9 +25,9 @@
 
                             @foreach ($medicamentos as $medicamento)
                                 <tr>
-                                    <td>{{ $medicamento->NombreComercial }}</td>
-                                    <td>{{ $medicamento->Composicion }}</td>
-                                    <td>{{ $medicamento->Presentacion}}</td>
+                                    <td>{{ $medicamento->nombreComercial }}</td>
+                                    <td>{{ $medicamento->composicion }}</td>
+                                    <td>{{ $medicamento->presentacion}}</td>
                                     <td>{{ $medicamento->enlaceOnline}}</td>
                                     <td>
                                         {!! Form::open(['route' => ['medicamentos.edit',$medicamento->id], 'method' => 'get']) !!}
