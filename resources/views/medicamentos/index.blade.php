@@ -20,7 +20,6 @@
                                 <th>Composicion</th>
                                 <th>Presentacion</th>
                                 <th>enlaceOnline</th>
-                                <th>fecha_inicio</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
 
@@ -30,7 +29,6 @@
                                     <td>{{ $medicamento->Composicion }}</td>
                                     <td>{{ $medicamento->Presentacion}}</td>
                                     <td>{{ $medicamento->enlaceOnline}}</td>
-                                    <td>{{ $medicamento->fecha_inicio}}</td>
                                     <td>
                                         {!! Form::open(['route' => ['medicamentos.edit',$medicamento->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

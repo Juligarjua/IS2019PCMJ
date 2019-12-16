@@ -27,11 +27,6 @@
                             {!! Form::label('enlaceOnline', 'enlaceOnline del medicamento') !!}
                             {!! Form::text('enlaceOnline',null,['class'=>'form-control', 'required']) !!}
                         </div>
-                        <div class="form-group">
-                            {!! Form::label('fecha_inicio', 'fecha inicio tratamiento') !!}
-                            {!! Form::text('fecha_inicio',null,['class'=>'form-control']) !!}
-                        </div>
-
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
