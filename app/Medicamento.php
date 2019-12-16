@@ -8,9 +8,9 @@ class Medicamento extends Model
 {
     protected $fillable = ['nombreComercial', 'composicion', 'presentacion', 'enlaceOnline'];
 
-    public function citas()
+    public function tratamiento()
     {
-        return $this->belongsToMany('App\Cita')->withPivot('fecha_inicio','fecha_fin','descripcion','unidades','frecuencia');
+        return $this->hasMany('App\Tratamiento');
     }
     public function getFullNameAttribute()
     {

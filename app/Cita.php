@@ -18,9 +18,9 @@ class Cita extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function medicamento()
+    public function tratamiento()
     {
-        return $this->belongsToMany('App\Medicamento')->withPivot('fecha_inicio','fecha_fin','descripcion','unidades','frecuencia');
+        return $this->hasMany('App\Tratamiento');
     }
 
 
