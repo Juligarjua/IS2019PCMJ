@@ -9,7 +9,7 @@
 
                     <div class="panel-body">
                         @include('flash::message')
-                        {!! Form::open(['route' => 'medicamentos.create', 'method' => 'get']) !!}
+                        {!! Form::open(['route' => 'medicamentos.create', 'method' => 'get','class'=>'inline-important']) !!}
                         {!!   Form::submit('medicamentos', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
@@ -25,16 +25,12 @@
                             </tr>
 
                             @foreach ($medicamentos as $medicamento)
-
-
                                 <tr>
                                     <td>{{ $medicamento->NombreComercial }}</td>
                                     <td>{{ $medicamento->Composicion }}</td>
                                     <td>{{ $medicamento->Presentacion}}</td>
                                     <td>{{ $medicamento->enlaceOnline}}</td>
                                     <td>{{ $medicamento->fecha_inicio}}</td>
-
-
                                     <td>
                                         {!! Form::open(['route' => ['medicamentos.edit',$medicamento->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

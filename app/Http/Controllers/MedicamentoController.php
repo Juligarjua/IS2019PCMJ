@@ -48,7 +48,6 @@ class MedicamentoController extends Controller
         $medicamento->save();
 
         flash('Medicamento creado correctamente');
-
         return redirect()->route('medicamentos.index');
     }
 
