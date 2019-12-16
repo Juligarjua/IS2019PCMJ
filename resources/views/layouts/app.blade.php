@@ -96,6 +96,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ url('/centros') }}">
+                                            Centros
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('/logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
