@@ -8,9 +8,9 @@ class Centro extends Model
 {
     protected $fillable = ['lugar'];
 
-    public function citas()
+    public function cita()
     {
-        return $this->hasMany('App\Citas');
+        return $this->hasMany('App\Cita');
     }
 
 }
