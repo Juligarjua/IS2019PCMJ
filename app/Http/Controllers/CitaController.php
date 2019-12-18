@@ -39,10 +39,10 @@ class CitaController extends Controller
     {
         $medicos = Medico::all()->pluck('full_name','id');
         $pacientes = Paciente::all()->pluck('full_name','id');
-        $centros = Centro::all()->pluck('full_name','id');
+        $centros = Centro::all()->pluck('lugar','id');
 
 
-        return view('citas/create',['centros'=>$centros, 'medicos'=>$medicos, 'pacientes'=>$pacientes]);
+        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'centros'=>$centros]);
     }
 
     /**
@@ -54,12 +54,10 @@ class CitaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fecha_hora' => 'required|date|after:now',
-            'centro_id'=> 'required|exists:centros,id',
             'medico_id' => 'required|exists:medicos,id',
-            'paciente_id' => 'required|exists:pacientes,id'
-
-
+            'paciente_id' => 'required|exists:pacientes,id',
+            'fecha_hora' => 'required|date|after:now',
+            'centro_id'=> 'required|exists:centros,id'
 
 
         ]);
@@ -98,7 +96,7 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
-        $centros = Centro::all()->pluck('full_name','id');
+        $centros = Centro::all()->pluck('lugar','id');
 
 
 
@@ -116,12 +114,10 @@ class CitaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'fecha_hora' => 'required|date|after:now',
-            'centro_id'=> 'required|exists:centros,id',
             'medico_id' => 'required|exists:medicos,id',
-            'paciente_id' => 'required|exists:pacientes,id'
-
-
+            'paciente_id' => 'required|exists:pacientes,id',
+            'fecha_hora' => 'required|date|after:now',
+            'centro_id'=> 'required|exists:centros,id'
 
 
         ]);

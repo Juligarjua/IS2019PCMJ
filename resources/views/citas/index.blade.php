@@ -5,22 +5,21 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Pacientes</div>
+                    <div class="panel-heading">Citas</div>
 
                     <div class="panel-body">
                         @include('flash::message')
                         {!! Form::open(['route' => 'citas.create', 'method' => 'get']) !!}
-                        {!!   Form::submit('Crear citas', ['class'=> 'btn btn-primary'])!!}
+                        {!!   Form::submit('Crear cita', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
-                                <th>fechahora</th>
-                                <th>centro</th>
-                                <th>medico</th>
-                                <th>paciente</th>
-
+                                <th>Fecha</th>
+                                <th>Medico</th>
+                                <th>Paciente</th>
+                                <th>Centro</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
 
@@ -29,9 +28,9 @@
 
                                 <tr>
                                     <td>{{ $cita->fecha_hora }}</td>
+                                    <td>{{ $cita->medico->full_name }}</td>
+                                    <td>{{ $cita->paciente->full_name}}</td>
                                     <td>{{ $cita->centro->lugar}}</td>
-                                    <td>{{ $cita->medico->name  }}</td>
-                                    <td>{{ $cita->paciente->name }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['citas.edit',$cita->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
@@ -50,3 +49,4 @@
                 </div>
             </div>
         </div>
+@endsection
