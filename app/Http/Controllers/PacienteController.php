@@ -82,6 +82,8 @@ class PacienteController extends Controller
     public function show($id)
     {
         // TODO: Mostrar las citas de un paciente
+
+
     }
 
     /**

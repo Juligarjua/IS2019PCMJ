@@ -16,6 +16,8 @@ class MedicamentoController extends Controller
     {
         $medicamentos = Medicamento::all();
 
+        
+
         return view('medicamentos/index')->with('medicamentos', $medicamentos);
     }
 
@@ -48,7 +50,6 @@ class MedicamentoController extends Controller
         $medicamento->save();
 
         flash('Medicamento creado correctamente');
-
         return redirect()->route('medicamentos.index');
     }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    protected $fillable = ['fecha_hora','lugar', 'medico_id', 'paciente_id'];
+    protected $fillable = ['fecha_hora', 'medico_id', 'paciente_id', 'centro_id'];
 
     public function medico()
     {
@@ -21,6 +21,10 @@ class Cita extends Model
     public function tratamiento()
     {
         return $this->hasMany('App\Tratamiento');
+    }
+    public function centro()
+    {
+        return $this->belongsTo('App\Centro');
     }
 
 
