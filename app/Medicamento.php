@@ -12,9 +12,4 @@ class Medicamento extends Model
     {
         return $this->hasMany('App\Tratamiento');
     }
-    public function getFullNameAttribute()
-    {
-        return $this->nombreComercial .' '.$this->composicion;
-    }
-
 }
