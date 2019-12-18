@@ -13,11 +13,11 @@
                         {!! Form::open(['route' => 'tratamientos.store']) !!}
                         <div class="form-group">
                             {!! Form::label('fecha_inicio', 'fecha_inicio ') !!}
-                            {!! Form::text('fecha_inicio',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                            <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" >
                         </div>
                         <div class="form-group">
                             {!! Form::label('fecha_fin', 'fecha_fin') !!}
-                            {!! Form::text('fecha_fin',null,['class'=>'form-control', 'required']) !!}
+                            <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" >
                         </div>
                         <div class="form-group">
                             {!! Form::label('unidades', 'unidades') !!}
@@ -28,7 +28,7 @@
                             {!! Form::text('descripcion',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('frecuencia', 'frecuencia del paciente') !!}
+                            {!! Form::label('frecuencia', 'frecuencia') !!}
                             {!! Form::text('frecuencia',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
