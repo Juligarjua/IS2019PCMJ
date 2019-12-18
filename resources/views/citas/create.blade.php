@@ -12,25 +12,23 @@
 
                         {!! Form::open(['route' => 'citas.store']) !!}
                         <div class="form-group">
-                            {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
-
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
-                        </div>
-
-                        <div class="form-group">
-                            {!!Form::label('medico_id', 'Medico') !!}
-                            <br>
-                            {!! Form::select('medico_id', $medicos, ['class' => 'form-control']) !!}
+                            {!! Form::label('fecha_hora', 'fecha_hora del paciente') !!}
+                            {!! Form::text('fecha_hora',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('paciente_id', 'Paciente') !!}
+                            {!!Form::label('centro_id', 'centro') !!}
                             <br>
-                            {!! Form::select('paciente_id', $pacientes, ['class' => 'form-control']) !!}
+                            {!! Form::select('centro_id', $centros, ['class' => 'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('centro_id', 'Centro') !!}
+                            {!!Form::label('medico_id', 'medico') !!}
                             <br>
-                            {!! Form::select('centro_id', $centros, ['class' => 'form-control']) !!}
+                            {!! Form::select('medico_id', $medicos, ['class' => 'form-control', 'required']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('paciente_id', 'paciente') !!}
+                            <br>
+                            {!! Form::select('paciente_id', $paciente, ['class' => 'form-control', 'required']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

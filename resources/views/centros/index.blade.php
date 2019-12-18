@@ -16,7 +16,7 @@
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
-                                <th>Nombre</th>
+                                <th>lugar</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
                             @foreach ($centros as $centro)

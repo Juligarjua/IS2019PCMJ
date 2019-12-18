@@ -14,10 +14,7 @@
 
                         <div class="form-group">
                             {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
-
-
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
-
+                            {!! Form::text('fecha_hora',$cita->fecha_hora,['class'=>'form-control', 'required', 'autofocus']) !!}
 
                         </div>
 

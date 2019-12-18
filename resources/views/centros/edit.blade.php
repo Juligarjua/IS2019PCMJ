@@ -18,7 +18,7 @@
                         </div>
 
 
-                        {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
+                        {!! Form::submit('Actualizar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
                     </div>
