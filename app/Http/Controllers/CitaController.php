@@ -39,7 +39,7 @@ class CitaController extends Controller
     {
         $medicos = Medico::all()->pluck('full_name','id');
         $pacientes = Paciente::all()->pluck('full_name','id');
-        $centros = Centro::all()->pluck('full_name','id');
+        $centros = Centro::all()->pluck('lugar','id');
 
 
         return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'centros'=>$centros]);
@@ -57,7 +57,7 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-            'cita_id'=> 'required|exists:citas,id'
+            'centro_id'=> 'required|exists:centros,id'
 
 
         ]);
@@ -96,7 +96,7 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
-        $centros = Centro::all()->pluck('full_name','id');
+        $centros = Centro::all()->pluck('lugar','id');
 
 
 

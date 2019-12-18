@@ -12,5 +12,9 @@ class Centro extends Model
     {
         return $this->hasMany('App\Citas');
     }
+    public function getFullNameAttribute()
+    {
+        return $this->lugar;
+    }
 
 }
