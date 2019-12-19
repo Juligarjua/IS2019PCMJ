@@ -21,6 +21,8 @@
                                 <th>Descripcion</th>
                                 <th>Unidades</th>
                                 <th>Frecuencia</th>
+                                <th>Medicamento</th>
+                                <th>Cita</th>
 
                                 <th colspan="2">Acciones</th>
                             </tr>
