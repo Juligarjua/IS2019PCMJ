@@ -17,6 +17,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>
+                                <th>Fecha final</th>
                                 <th>Medico</th>
                                 <th>Paciente</th>
                                 <th>Centro</th>
@@ -28,6 +29,7 @@
 
                                 <tr>
                                     <td>{{ $cita->fecha_hora }}</td>
+                                    <td>{{ $cita->fecha_fin }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>{{ $cita->centro->lugar}}</td>
@@ -49,4 +51,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

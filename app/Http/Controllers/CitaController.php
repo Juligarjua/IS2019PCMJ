@@ -57,12 +57,13 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-            'centro_id'=> 'required|exists:centros,id'
+            'centro_id'=> 'required|exists:centros,id',
+            'fecha_fin' => 'required|date|after|fecha_hora,+15 minutes'
 
 
         ]);
 
-        $cita = new Cita(array_merge($request->all(),['index' => date('fecha_hora',strtotime("+15 minutes"))]));
+        $cita = new Cita($request->all());
         $cita->save();
 
         flash('Cita creada correctamente');
@@ -117,12 +118,13 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-            'centro_id'=> 'required|exists:centros,id'
+            'centro_id'=> 'required|exists:centros,id',
+            'fecha_fin' => 'required|date|after|fecha_hora,+15 minutes'
 
 
         ]);
         $cita = Cita::find($id);
-        $cita->fill(array_merge($request->all(),['index' => date('fecha_hora',strtotime("+15 minutes"))]));
+        $cita->fill($request->all());
 
         $cita->save();
 
