@@ -119,7 +119,7 @@ class CitaController extends Controller
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
             'centro_id'=> 'required|exists:centros,id',
-            'fecha_fin' => 'required|date|after|fecha_hora,+15 minutes'
+            'fecha_fin' => 'required|date|after:fecha_hora,+15 minutes'
 
 
         ]);
