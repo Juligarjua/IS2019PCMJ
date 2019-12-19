@@ -21,7 +21,7 @@ Route::resource('especialidades', 'EspecialidadController');
 
 Route::resource('medicos', 'MedicoController');
 
-Route::get('pacientes/pacientePorEspecialidad', 'PacienteController@pacientePorEspecialidad')->name('pacientes.pacientePorEspecialidad');
+Route::get('pacientes/pacienteyEspecialidad', 'PacienteController@pacienteyEspecialidad')->name('pacientes.pacienteyEspecialidad');
 Route::resource('pacientes', 'PacienteController');
 Route::resource('enfermedades', 'EnfermedadController');
 Route::resource('medicamentos', 'MedicamentoController');

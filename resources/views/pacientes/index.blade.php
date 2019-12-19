@@ -14,7 +14,7 @@
                         {!! Form::close() !!}
 
                         <br><br>
-                        {!! Form::open(['route' => 'pacientes.pacientePorEspecialidad', 'method' => 'get']) !!}
+                        {!! Form::open(['route' => 'pacientes.pacienteyEspecialidad', 'method' => 'get']) !!}
                         {!! Form::label('especialidad_id', 'Especialidad enfermedad')!!}
                         <br>
                         {!! Form::select('especialidad_id',$especialidades=\App\Especialidad::all()->pluck('name','id'),
