@@ -13,7 +13,14 @@
                         {!! Form::open(['route' => 'citas.store']) !!}
                         <div class="form-group">
                             {!! Form::label('fecha_hora', 'fecha_hora del paciente') !!}
-                                <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />                        </div>
+                                <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('fecha_fin', 'fecha_fin del paciente') !!}
+                                <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                        </div>
+
                         <div class="form-group">
                             {!!Form::label('medico_id', 'medico') !!}
                             <br>
