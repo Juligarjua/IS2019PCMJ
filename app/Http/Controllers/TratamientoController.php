@@ -28,7 +28,7 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        $medicamentos = Medicamento::all()->pluck('full_name','id');
+        $medicamentos = Medicamento::all()->pluck('nombreComercial','id');
 
         $citas = Cita::all()->pluck('full_name','id');
 
@@ -81,7 +81,7 @@ class TratamientoController extends Controller
 
         $tratamiento = Tratamiento::find($id);
 
-        $medicamentos = Medicamento::all()->pluck('full_name','id');
+        $medicamentos = Medicamento::all()->pluck('nombreCompleto','id');
 
         $citas = Cita::all()->pluck('full_name','id');
 

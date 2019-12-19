@@ -28,4 +28,9 @@ class Cita extends Model
     }
 
 
+    public function getFullNameAttribute()
+    {
+        return $this->paciente_id.' -> '.$this->fecha_hora;
+    }
+
 }

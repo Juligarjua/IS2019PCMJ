@@ -20,19 +20,19 @@
                             <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" >
                         </div>
                         <div class="form-group">
-                            {!! Form::label('unidades', 'unidades') !!}
-                            {!! Form::text('unidades',null,['class'=>'form-control', 'required']) !!}
-                        </div>
-                        <div class="form-group">
                             {!! Form::label('descripcion', 'descripcion ') !!}
                             {!! Form::text('descripcion',null,['class'=>'form-control', 'required']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('unidades', 'unidades') !!}
+                            {!! Form::text('unidades',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('frecuencia', 'frecuencia') !!}
                             {!! Form::text('frecuencia',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('medicamento_id', 'medicamento paciente') !!}
+                            {!!Form::label('medicamento_id', 'medicamento') !!}
                             <br>
                             {!! Form::select('medicamento_id', $medicamentos, ['class' => 'form-control', 'required']) !!}
                         </div>
