@@ -5,22 +5,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Pacientes</div>
+                    <div class="panel-heading">Pacientes por especialidad</div>
 
                     <div class="panel-body">
-                        @include('flash::message')
-                        {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
-                        {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
+                        {!!   Form::submit('Todos los pacientes', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
-                        <br><br>
-                        {!! Form::open(['route' => 'pacientes.pacientePorEspecialidad', 'method' => 'get']) !!}
-                        {!! Form::label('especialidad_id', 'Especialidad enfermedad')!!}
-                        <br>
-                        {!! Form::select('especialidad_id',$especialidades=\App\Especialidad::all()->pluck('name','id'),
-                        ['class'=>'form-control','required']) !!}
-                        {!! Form::submit('Buscar paciente', ['class'=> 'btn btn-primary'])!!}
-                        {!! Form::close() !!}
                         <br><br>
 
                         <table class="table table-striped table-bordered">
@@ -31,6 +22,7 @@
                                 <th>Enfermedad</th>
 
                                 <th colspan="2">Acciones</th>
+
                             </tr>
 
                             @foreach ($pacientes as $paciente)
@@ -39,8 +31,9 @@
                                 <tr>
                                     <td>{{ $paciente->name }}</td>
                                     <td>{{ $paciente->surname }}</td>
-                                    <td>{{ $paciente->nuhsa }}</td>
+                                    <td>{{ $paciente->nuhsa}}</td>
                                     <td>{{ $paciente->enfermedad->name }}</td>
+
                                     <td>
                                         {!! Form::open(['route' => ['pacientes.edit',$paciente->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
@@ -52,6 +45,9 @@
                                         {!! Form::close() !!}
 
                                     </td>
+
+
+
                                 </tr>
                             @endforeach
                         </table>
@@ -59,4 +55,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

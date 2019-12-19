@@ -40,6 +40,11 @@ class PacienteController extends Controller
         return view('pacientes/create',['enfermedades'=>$enfermedades]);
 
     }
+    public function pacientePorEspecialidad(Request $request){
+        $enfermedades = Enfermedad::where('especialidad_id',$request->especialidad_id)->select('id')->get();
+        $pacientes = Paciente::whereIn('enfermedad_id',$enfermedades)->get();
+        return view('pacientes/pacientePorEspecialidad',compact('pacientes'));
+    }
 
     /**
      * Store a newly created resource in storage.
