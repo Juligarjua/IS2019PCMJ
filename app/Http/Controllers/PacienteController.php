@@ -40,6 +40,11 @@ class PacienteController extends Controller
         return view('pacientes/create',['enfermedades'=>$enfermedades]);
 
     }
+    public function pacienteyEspecialidad(Request $request){
+        $enfermedades = Enfermedad::where('especialidad_id',$request->especialidad_id)->select('id')->get();
+        $pacientes = Paciente::whereIn('enfermedad_id',$enfermedades)->get();
+        return view('pacientes/pacienteyEspecialidad',compact('pacientes'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -98,9 +103,6 @@ class PacienteController extends Controller
         $enfermedades = Enfermedad::all()->pluck('name','id');
 
 
-
-
-
         return view('pacientes/edit',['paciente'=> $paciente,'enfermedades'=> $enfermedades ]);
     }
 
@@ -116,7 +118,7 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|unique:pacientes,nuhsa|max:12',
+            'nuhsa' => 'required|nuhsa|max:12',
             'enfermedad_id' => 'required|exists:enfermedads,id',
 
 

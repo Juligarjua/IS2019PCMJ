@@ -14,6 +14,15 @@
                         {!! Form::close() !!}
 
                         <br><br>
+                        {!! Form::open(['route' => 'pacientes.pacienteyEspecialidad', 'method' => 'get']) !!}
+                        {!! Form::label('especialidad_id', 'Especialidad enfermedad')!!}
+                        <br>
+                        {!! Form::select('especialidad_id',$especialidades=\App\Especialidad::all()->pluck('name','id'),
+                        ['class'=>'form-control','required']) !!}
+                        {!! Form::submit('Buscar paciente', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
+                        <br><br>
+
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>
