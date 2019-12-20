@@ -79,14 +79,14 @@ class TratamientoController extends Controller
     public function edit($id)
     {
 
-        $tratamiento = Tratamiento::find($id);
+        $tratamientos = Tratamiento::find($id);
 
         $medicamentos = Medicamento::all()->pluck('nombreCompleto','id');
 
         $citas = Cita::all()->pluck('full_name','id');
 
 
-        return view('tratamientos/edit',['tratamiento'=> $tartamiento, 'medicamentos'=>$medicamentos, 'citas'=>$citas]);
+        return view('tratamientos/edit',['tratamiento'=> $tratamientos, 'medicamentos'=>$medicamentos, 'citas'=>$citas]);
     }
 
     /**

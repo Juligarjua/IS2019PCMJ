@@ -26,7 +26,7 @@
 
                             @foreach ($citas as $cita)
 
-
+{{dd,citas}}
                                 <tr>
                                     <td>{{ $cita->fecha_hora }}</td>
                                     <td>{{ $cita->fecha_fin }}</td>
